@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="620" viewBox="0 0 1200 620" role="img" aria-labelledby="ttl dsc">
+<title id="ttl">Pinhole shift, conceptual illustration</title><desc id="dsc">Two simplified optical sections compare a centred pinhole with an offset pinhole relative to a 35 mm film plane. Not a CAD representation of PiCa135.</desc>
+<rect width="1200" height="620" fill="#e9eae5"/>
+<g font-family="Arial,Helvetica,sans-serif" fill="#5a5d56" font-weight="400"><text x="62" y="64" font-size="14" letter-spacing="2.1">THE PRINCIPLE</text><text x="1138" y="64" font-size="12" text-anchor="end" letter-spacing="1.25">CONCEPT / NOT TO SCALE</text></g>
+<line x1="60" y1="86" x2="1140" y2="86" stroke="#bfc3ba" stroke-width="1"/>
+<!-- panel centre -->
+<g transform="translate(58,116)">
+<text x="0" y="17" font-family="Arial,Helvetica,sans-serif" fill="#292d29" font-size="21" font-weight="400">01 / Centred</text>
+<text x="0" y="44" font-family="Arial,Helvetica,sans-serif" fill="#6a6e65" font-size="12">STANDARD OPTICAL AXIS</text>
+<rect x="38" y="98" width="385" height="278" fill="#f3f3f0" stroke="#c3c6be"/>
+<rect x="60" y="112" width="15" height="250" fill="#303530"/>
+<rect x="385" y="112" width="12" height="250" fill="#767c73"/>
+<line x1="75" y1="237" x2="386" y2="237" stroke="#8c9589" stroke-dasharray="6 6" stroke-width="1.5"/>
+<path d="M71 237 L387 131 M71 237 L387 343" fill="none" stroke="#c3a58d" stroke-width="1.7"/>
+<circle cx="71" cy="237" r="7" fill="#e9eae5" stroke="#6d776c" stroke-width="2.2"/>
+<line x1="385" y1="112" x2="385" y2="362" stroke="#303530" stroke-width="2.5"/>
+<g font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#565c54">
+<text x="16" y="419">Pinhole</text><path d="M61 394 L72 246" fill="none" stroke="#8b9589"/>
+<text x="327" y="419">Film plane</text><path d="M364 391 L388 352" fill="none" stroke="#8b9589"/>
+</g></g>
+<!-- panel shift -->
+<g transform="translate(648,116)">
+<text x="0" y="17" font-family="Arial,Helvetica,sans-serif" fill="#292d29" font-size="21" font-weight="400">02 / Shifted</text>
+<text x="0" y="44" font-family="Arial,Helvetica,sans-serif" fill="#6a6e65" font-size="12">OFF-CENTRE OPTICAL AXIS</text>
+<rect x="38" y="98" width="385" height="278" fill="#f3f3f0" stroke="#c3c6be"/>
+<rect x="60" y="112" width="15" height="250" fill="#303530"/>
+<rect x="385" y="112" width="12" height="250" fill="#767c73"/>
+<line x1="75" y1="237" x2="386" y2="237" stroke="#c4c8c0" stroke-dasharray="6 6" stroke-width="1.5"/>
+<line x1="75" y1="184" x2="386" y2="184" stroke="#8c9589" stroke-dasharray="6 6" stroke-width="1.5"/>
+<path d="M71 184 L387 90 M71 184 L387 304" fill="none" stroke="#c3a58d" stroke-width="1.7"/>
+<circle cx="71" cy="184" r="7" fill="#e9eae5" stroke="#6d776c" stroke-width="2.2"/>
+<line x1="385" y1="112" x2="385" y2="362" stroke="#303530" stroke-width="2.5"/>
+<path d="M23 230 L23 185 M16 194 L23 183 L30 194" fill="none" stroke="#5d685d" stroke-width="2"/>
+<g font-family="Arial,Helvetica,sans-serif" font-size="12" fill="#565c54">
+<text x="4" y="419">Shift</text><path d="M40 392 L72 191" fill="none" stroke="#8b9589"/>
+<text x="327" y="419">Film plane</text><path d="M364 391 L388 352" fill="none" stroke="#8b9589"/>
+</g></g>
+<line x1="598" y1="117" x2="598" y2="550" stroke="#c5c8bf"/>
+</svg>
