@@ -1,4 +1,4 @@
-# Anders Blomqvist — Website v20
+# Anders Blomqvist — Website v21.1
 
 A rebuilt static website with **three entry points**: Research, Make, Photography. No blog, no achievements on the home page.
 
@@ -92,3 +92,30 @@ The Make index links to a dedicated Film Developer Timer project page, and the p
 - Adds a cross-project navigation at the bottom of PiCa135 while preserving the original source-backed engineering explanation and assembly manual.
 - Adds a Lovable link to the Make-related page footers; it was not introduced as a separate fourth homepage entrance.
 - Source availability: the Lovable product page was not publicly retrievable during this build. Do not treat the illustrative timer as an implementation screenshot.
+
+
+## Version 21 — photographic archive (13 November 2026)
+
+- Adds `/photography/archive/` and pages for F12 / Gruppo F, the 2004–2005 collaboration with Joakim Sebring, and the 2008 Gunnar Smoliansky interview.
+- Adds an original portrait by Anders Blomqvist, retrieved from his historic 2009 editorial email correspondence. The photo is credited on its project page. No images by Smoliansky and no original audio are uploaded.
+- Updates the Photography index, About, CV and homepage link wording to reflect photographic editorial and collaborative work.
+- Adds the author's November 2026 Hasselblad Film Magazine Mount Assembly Guide V5 (10 pages) as a local PDF.
+- Clarifies the status of ongoing Japan research manuscripts without asserting publication.
+- Old original interviews, source materials and original film series are not republished. The 2009 F Blog article is linked as an external historical source.
+
+### Updating an existing GitHub Pages site
+
+Use the dedicated `Ikonta_v21_UPPDATERING.zip` package when available: extract, then drag *the extracted files and folders themselves* into the repository root's `Add file → Upload files` view. GitHub replaces matching paths. Do not upload the ZIP as a file.
+
+Version 21 contains no change to GitHub Pages settings or deployment structure.
+
+
+## Version 21.1 — corrections before GitHub upload (14 November 2026)
+
+- CV title corrected to **Deputy Director**.
+- Gruppo F period broadened from 2008–2009 to the 2000s–2010s. This is intentionally a broad date range; it does not assert an exact founding or closing year.
+- Smoliansky note distinguishes the 12 June 2008 press encounter and the longer conversation on 30 June 2008. An essay drawing on the recordings is in preparation, not published.
+- Photography entry no longer implies that all archive activity ended in 2009.
+- This update package includes all v21 files as well as these corrections; do not upload the older v21 ZIP as a second step.
+
+To upload via GitHub Pages: extract ZIP locally, open the repository root, use **Add file → Upload files**, drag in the **contents** (preserving folders), review the changed paths, and **Commit changes**.
