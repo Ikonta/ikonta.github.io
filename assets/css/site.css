@@ -428,3 +428,13 @@
  .datamax-gallery{grid-template-columns:repeat(3,minmax(0,1fr));max-width:100%;gap:9px;}
  .datamax-gallery img,.datamax-gallery .datamax-gallery-wide img{width:100%;height:auto;max-height:none;aspect-ratio:1000/1333;}
 }
+
+/* v21.2.4: RAINFIELD is an independent maker concept. Compact index entry. */
+.make-concept{margin:24px 0 0;padding:21px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:170px minmax(0,1fr);gap:26px;align-items:center}
+.make-concept-preview{display:flex;align-items:center;justify-content:center;background:#e9eae6;width:170px;height:128px;overflow:hidden}
+.make-concept-preview img{display:block;max-width:142px;max-height:108px;width:auto;height:auto;object-fit:contain}
+.make-concept-copy h2{font-size:clamp(22px,2.25vw,31px);margin:7px 0 6px}
+.make-concept-copy p{font-size:13px;color:#666d65;line-height:1.62;max-width:560px;margin:0 0 8px}
+.make-concept-copy .rainfield-launch{margin-top:6px;display:flex;flex-wrap:wrap;gap:18px}
+.make-concept-copy .rainfield-launch a{font-size:12px}
+@media(max-width:540px){.make-concept{grid-template-columns:105px minmax(0,1fr);gap:14px;align-items:start}.make-concept-preview{width:105px;height:94px}.make-concept-preview img{max-width:91px;max-height:75px}.make-concept-copy h2{font-size:22px}.make-concept-copy p{font-size:12px}.make-concept-copy .rainfield-launch{gap:10px}}

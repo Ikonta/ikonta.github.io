@@ -1,3 +1,7 @@
+# v21.2.4 — RAINFIELD belongs to Make (15 November 2026)
+
+RAINFIELD is an independent **maker concept**, not a research collaboration with Björn Hedin. It is now listed on **Make** with a direct link to its interactive mobile demo. All RAINFIELD references have been removed from **Research** and **Learning through touch**. Björn Hedin remains correctly linked only for the separate tangible-learning collaboration. Sensor and rainfall values remain conceptual/simulated. Datamax photography and all other project content remain as in v21.2.3.
+
 # Anders Blomqvist — Website v21.2.2
 
 A rebuilt static website with **three entry points**: Research, Make, Photography. No blog, no achievements on the home page.
@@ -125,9 +129,9 @@ To upload via GitHub Pages: extract ZIP locally, open the repository root, use *
 
 This update is based on the published v21.1 baseline and replaces the previously prepared standalone Film Developer Timer v21.2 package.
 
-New: `projects/rainfield/` (research concept study), `projects/rainfield/mobile/` (interactive simulated interface), `projects/datamax-thermal/` (thermal-printing case study), and accompanying original visual assets.
+New: `projects/rainfield/` (independent maker concept study), `projects/rainfield/mobile/` (interactive simulated interface), `projects/datamax-thermal/` (thermal-printing case study), and accompanying original visual assets.
 
-Updated: Research and Tangible Learning with the RAINFIELD concept and Björn Hedin collaboration link; Make with Datamax project; Research/About/CV with ORCID, Google Scholar, KTH, and LinkedIn; Film Developer Timer with two application screenshots.
+Updated: Make with independent RAINFIELD and Datamax concepts; Research with the separate Björn Hedin tangible-learning collaboration; Research/About/CV with ORCID, Google Scholar, KTH, and LinkedIn; Film Developer Timer with two application screenshots.
 
 **Grounding and status:** RAINFIELD is a concept, not an operational rain gauge; all mobile values are simulated. Datamax custom printer output succeeded at the simple test-mark stage; 80 mm photographic strips and the adapter's final physical fit are not verified. The contact-strip image is an illustrative digital rendering using archive photographs, not an actual printer output.
 
