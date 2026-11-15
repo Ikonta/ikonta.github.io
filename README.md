@@ -1,3 +1,6 @@
+## v21.2.5 · 15 November 2026 — homepage Research image
+Replaced the geometric illustration in the homepage Research card with the supplied documentary photograph (IMG_4633s.jpg). No other page content or styling was changed. RAINFIELD remains under Make, separate from Björn Hedin’s research collaboration.
+
 # v21.2.4 — RAINFIELD belongs to Make (15 November 2026)
 
 RAINFIELD is an independent **maker concept**, not a research collaboration with Björn Hedin. It is now listed on **Make** with a direct link to its interactive mobile demo. All RAINFIELD references have been removed from **Research** and **Learning through touch**. Björn Hedin remains correctly linked only for the separate tangible-learning collaboration. Sensor and rainfall values remain conceptual/simulated. Datamax photography and all other project content remain as in v21.2.3.
