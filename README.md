@@ -147,3 +147,11 @@ The log supplied by the owner records seven print sections (jobs 67–73, each H
 Source files for the new original photographic assets: `24659.jpg`–`24663.jpg` and `image(20261115-083914).png`. Files have been converted to optimized WebP for the website.
 
 To publish, unpack the REVISED UPDATE ZIP and drag its root-level contents to the GitHub repository root using Add file → Upload files, preserving directories. This has not been published to GitHub by the packaging operation.
+
+
+### 21.2.1 · 15 November 2026 — image scale correction
+- Datamax: compact, linked print contact sheet; smaller printer and interface photographs. Original images remain full-resolution files.
+- RAINFIELD: constrained scientific illustrations and mobile previews.
+- Film Developer Timer: smaller reference screenshots.
+- No project text or measurement claims changed.
+- Further site-wide review: constrained the stand-alone Smoliansky portrait and PiCa135 technical illustrations; image grids and photographic lightbox are unchanged.

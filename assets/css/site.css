@@ -282,3 +282,64 @@
 @media(max-width:680px){.datamax-photo-hero img{max-height:500px;object-fit:contain}.datamax-gallery{gap:14px}.datamax-gallery img{height:235px}.datamax-gallery .datamax-gallery-wide img{height:auto;max-height:460px}.datamax-log>div{grid-template-columns:1fr;gap:4px}}
 
 .datamax-job-details{max-width:780px;margin:14px 0 22px;padding:10px 0 4px;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}.datamax-job-details summary{cursor:pointer;padding:6px 0 12px;color:#525b50;font-size:13px;list-style-position:inside}.datamax-job-scroll{overflow:auto}.datamax-job-details table{border-collapse:collapse;width:100%;min-width:520px;font-size:12px}.datamax-job-details th,.datamax-job-details td{text-align:left;padding:9px 14px 9px 0;border-bottom:1px solid #e3e5df;font-weight:400;white-space:nowrap}.datamax-job-details th{color:#828a7f;font-size:10px;text-transform:uppercase;letter-spacing:.08em}
+
+
+/* V21.2.1 — image-size audit and editorial scale correction, 15 Nov 2026.
+   Large image files may retain their resolution; only their layout is reduced.
+   Keep original artwork uncropped. */
+.case-intro, .case-section, .case-visual, .case-inline-figure,
+.datamax-gallery, .instrument-screen-grid { min-width: 0; }
+.case-intro img, .case-inline-figure img { max-width:100%; }
+
+/* Datamax: a compact photographic record, not a full-page print enlargement. */
+.datamax-intro { grid-template-columns:minmax(0,1.12fr) minmax(0,.72fr); align-items:start; gap:clamp(28px,5vw,64px); }
+.datamax-photo-hero { width:100%; max-width:360px; justify-self:end; margin:0; background:transparent; }
+.datamax-photo-hero img { display:block; width:100%; height:360px; max-height:none; object-fit:contain; object-position:center; background:#e8e9e5; }
+.datamax-photo-hero figcaption { padding:8px 0 0; }
+.datamax-gallery { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; max-width:800px; margin:21px 0 12px; }
+.datamax-gallery figure, .datamax-gallery .datamax-gallery-wide { min-width:0; grid-column:auto; margin:0; }
+.datamax-gallery a { display:block; background:#e9eae5; outline-offset:3px; }
+.datamax-gallery img, .datamax-gallery .datamax-gallery-wide img { display:block; width:100%; height:235px; max-height:none; object-fit:contain; background:#e9eae5; transition:filter .18s; }
+.datamax-gallery a:hover img { filter:contrast(1.04); }
+.datamax-gallery figcaption { font-size:10.5px; line-height:1.5; color:#828980; padding:7px 0 0; }
+.datamax-gallery-note { font-size:11px!important; color:#8a9087!important; margin:0 0 14px!important; }
+.datamax-screen-figure { max-width:380px; margin:18px 0; }
+.datamax-screen-figure img { display:block; width:100%; max-width:100%; height:auto; max-height:360px; object-fit:contain; margin:0; }
+
+/* Rainfield: scientific plates and screen concepts stay at readable editorial scale. */
+.case-intro:not(.datamax-intro) .case-visual { max-width:500px; justify-self:end; width:100%; }
+.case-section:has(img[src*="rainfield-"]) .case-inline-figure { max-width:640px; }
+.tangible-feature-art { max-width:650px; }
+
+/* Film Developer Timer: two reference screens, not floor-to-ceiling posters. */
+.instrument-screen-grid { max-width:680px; }
+.instrument-screen-frame img { max-width:205px; max-height:470px; width:auto; height:auto; object-fit:contain; }
+
+@media(max-width:800px){
+  .datamax-intro { grid-template-columns:1fr; }
+  .datamax-photo-hero { justify-self:start; max-width:340px; }
+  .case-intro:not(.datamax-intro) .case-visual { justify-self:start; max-width:550px; }
+  .datamax-gallery { grid-template-columns:repeat(2,minmax(0,1fr)); max-width:600px; gap:17px; }
+  .datamax-gallery img, .datamax-gallery .datamax-gallery-wide img { height:245px; }
+}
+@media(max-width:540px){
+  .datamax-photo-hero { max-width:100%; }
+  .datamax-photo-hero img { height:300px; }
+  .datamax-gallery { gap:13px 11px; }
+  .datamax-gallery img, .datamax-gallery .datamax-gallery-wide img { height:185px; }
+  .datamax-gallery figcaption { font-size:10px; }
+  .datamax-screen-figure { max-width:310px; }
+  .instrument-screen-frame img { max-width:185px; max-height:420px; }
+}
+
+/* Consistent scale on longer photo / technical article pages. */
+.archive-photo { max-width:760px; }
+.archive-photo img { width:100%; height:auto; max-height:555px; object-fit:contain; }
+.p18-cover figure { max-height:490px; }
+.p18-diagram { max-width:870px; }
+.p18-diagram img { max-height:510px; object-fit:contain; }
+.datamax-screen-figure img { aspect-ratio:1; }
+.p18-cover figure { height:490px; aspect-ratio:auto; }
+@media(max-width:820px){.p18-cover figure { height:min(60vw,460px); }}
+@media(max-width:600px){.p18-cover figure { height:min(85vw,360px); }}
+.p18-cover figure img { min-height:0; min-width:0; max-height:100%; }
