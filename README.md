@@ -119,3 +119,31 @@ Version 21 contains no change to GitHub Pages settings or deployment structure.
 - This update package includes all v21 files as well as these corrections; do not upload the older v21 ZIP as a second step.
 
 To upload via GitHub Pages: extract ZIP locally, open the repository root, use **Add file → Upload files**, drag in the **contents** (preserving folders), review the changed paths, and **Commit changes**.
+
+
+## 2026-11-14 / V21.2 consolidated update
+
+This update is based on the published v21.1 baseline and replaces the previously prepared standalone Film Developer Timer v21.2 package.
+
+New: `projects/rainfield/` (research concept study), `projects/rainfield/mobile/` (interactive simulated interface), `projects/datamax-thermal/` (thermal-printing case study), and accompanying original visual assets.
+
+Updated: Research and Tangible Learning with the RAINFIELD concept and Björn Hedin collaboration link; Make with Datamax project; Research/About/CV with ORCID, Google Scholar, KTH, and LinkedIn; Film Developer Timer with two application screenshots.
+
+**Grounding and status:** RAINFIELD is a concept, not an operational rain gauge; all mobile values are simulated. Datamax custom printer output succeeded at the simple test-mark stage; 80 mm photographic strips and the adapter's final physical fit are not verified. The contact-strip image is an illustrative digital rendering using archive photographs, not an actual printer output.
+
+Technical reference for MP Compact4 Mark II direct-thermal capabilities: Datamax–O'Neil MP Compact4 Mark II datasheet (2010); 8 dots/mm, 104 mm max print width, 40–115 mm media width.
+
+**GitHub upload:** Extract `Ikonta_v21_2_SAMLAD_UPPDATERING.zip`, then drag **all its folders** from File Explorer to GitHub's `Add file → Upload files` area at the repository root. Verify full paths before committing (particularly `projects/rainfield/mobile/index.html`, `projects/datamax-thermal/index.html`, `assets/images/rainfield-mobile-views.png`). Do NOT upload the ZIP file itself.
+
+
+## V21.2 revised final / Datamax print evidence (15 November 2026)
+
+This package supersedes the original V21.2 preparation package. It includes all previously queued V21.2 pages, the RAINFIELD interactive mobile, researcher profile links, and Film Developer Timer screenshots. **Do not upload the old V21.2 ZIP after this one.**
+
+The Datamax project now features original photographs of actual thermal photographic prints taken on 15 November 2026 and a screen capture of the FILM ROLL print interface. The physical-output status on the project page was updated from prospective to demonstrated. The illustration `datamax-contact-strip-study.webp` is retained only as a legacy asset, not shown on the current Datamax page.
+
+The log supplied by the owner records seven print sections (jobs 67–73, each HTTP 200 ok=true) and a separate 10 mm feed (job 74), but no record of section 8/8. Queue acceptance is not itself confirmation of physical printing of all seven segments. Photographs independently show physical thermal output. Avoid claiming full 8/8 completion.
+
+Source files for the new original photographic assets: `24659.jpg`–`24663.jpg` and `image(20261115-083914).png`. Files have been converted to optimized WebP for the website.
+
+To publish, unpack the REVISED UPDATE ZIP and drag its root-level contents to the GitHub repository root using Add file → Upload files, preserving directories. This has not been published to GitHub by the packaging operation.
