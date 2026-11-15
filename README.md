@@ -1,4 +1,4 @@
-# Anders Blomqvist — Website v21.1
+# Anders Blomqvist — Website v21.2.2
 
 A rebuilt static website with **three entry points**: Research, Make, Photography. No blog, no achievements on the home page.
 
@@ -155,3 +155,15 @@ To publish, unpack the REVISED UPDATE ZIP and drag its root-level contents to th
 - Film Developer Timer: smaller reference screenshots.
 - No project text or measurement claims changed.
 - Further site-wide review: constrained the stand-alone Smoliansky portrait and PiCa135 technical illustrations; image grids and photographic lightbox are unchanged.
+
+
+## v21.2.2 — compact images and RAINFIELD app navigation
+- Reduced Datamax hero to 240px max width and gallery images to 154px height on desktop. Original image assets are unchanged and openable separately.
+- Reduced Make spotlight and RAINFIELD concept illustrations.
+- Added visible one-click `Open rain app` links on Research, Tangible Learning and RAINFIELD concept pages.
+- The app exists at `/projects/rainfield/mobile/`; ensure this entire subfolder is uploaded.
+- Added CSS query version `?v=21.2.2` on amended pages to avoid stale cached styling.
+
+
+### Datamax image revision · 15 November 2026 (v21.2.3)
+Replaced the earlier Datamax image collection with exactly three authentic photographs supplied by Anders. The page now contains one compact three-image strip, with no large hero image and no extra FILM ROLL screenshot. The Make overview teaser uses the first of these same three photographs. RAINFIELD app and all other site sections are unchanged.
