@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="sv">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="apple-mobile-web-app-title" content="Laptopogram">
+  <meta name="theme-color" content="#121310">
+  <meta name="description" content="From screen to photographic paper. Local image processing, timed exposure and test strips.">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" type="image/png" href="./icon-192.png">
+  <link rel="apple-touch-icon" href="./icon-180.png">
+  <link rel="canonical" href="https://ikonta.github.io/laptopogram/">
+  <meta property="og:url" content="https://ikonta.github.io/laptopogram/">
+  <meta property="og:title" content="Laptopogram">
+  <meta property="og:description" content="From screen to photographic paper.">
+  <title>Laptopogram — From screen to photographic paper</title>
+  <link rel="stylesheet" href="./styles.css?v=6">
+  <script type="module" src="./app.mjs?v=6"></script>
+</head>
+<body>
+  <main id="controls" class="shell">
+    <header class="masthead">
+      <div><div class="eyebrow"><span data-i18n="DIGITAL BILD. ANALOGT PAPPER.">DIGITAL BILD. ANALOGT PAPPER.</span></div><h1>Laptopogram<span class="orange">.</span></h1></div>
+      <div class="instrument-id"><span class="local-dot"></span><span data-i18n="BILDEN STANNAR PÅ DIN ENHET"> BILDEN STANNAR PÅ DIN ENHET</span><br><span>EXPOSURE TIMER / 06</span></div>
+    <div class="header-tools"><label for="language" class="sr-only" data-i18n="language">Språk</label><select id="language" aria-label="Language"><option value="sv" lang="sv">Svenska</option><option value="en" lang="en">English</option><option value="ja" lang="ja">日本語</option></select><button id="share" class="share-button" data-i18n="share">Dela</button></div></header>
+    <div class="workbench">
+      <section class="image-section" aria-label="Bild och förhandsvisning" data-i18n-aria="Bild och förhandsvisning">
+        <div class="section-heading"><span class="index">01</span><h2><span data-i18n="Bild">Bild</span></h2><div class="image-actions"><button id="demo" class="quiet"><span data-i18n="Testbild">Testbild</span></button><input type="file" id="file" accept="image/jpeg,image/png,image/webp,image/avif,image/bmp" hidden></div></div>
+        <div id="screenFormat" class="screen-format"><span data-i18n="Exponeringsyta">Exponeringsyta</span></div>
+        <button type="button" id="dropzone" class="preview-well" aria-label="Välj eller byt bild" data-i18n-aria="Välj eller byt bild">
+          <canvas id="preview" aria-label="Förberedd bild, visad i samma proportioner som skärmen" data-i18n-aria="Förberedd bild, visad i samma proportioner som skärmen"></canvas>
+          <span id="empty" class="empty-state"><svg width="68" height="54" viewBox="0 0 68 54" fill="none" aria-hidden="true"><path d="M1 16V1h15M52 1h15v15M67 38v15H52M16 53H1V38" stroke="currentColor" stroke-width="2"/><path d="M22 27h24M34 15v24" stroke="currentColor"/></svg><strong><span data-i18n="Tryck här för att välja bild">Tryck här för att välja bild</span></strong><span><span data-i18n="Släpp en JPG, PNG eller WebP här.">Släpp en JPG, PNG eller WebP här.</span><br><span data-i18n="Du kan också börja med testbilden.">Du kan också börja med testbilden.</span></span></span>
+          <span class="preview-tag"><span data-i18n="FÖRHANDSVISNING">FÖRHANDSVISNING</span></span>
+        </button>
+        <div class="image-meta"><span id="filename"><span data-i18n="Ingen bild vald">Ingen bild vald</span></span><span id="dimensions">—</span></div>
+        <div class="setting-row rotation-row"><label for="rotation"><span data-i18n="Rotation">Rotation</span></label><select id="rotation"><option value="0">0°</option><option value="90">90°</option></select></div>
+        <div class="preparation">
+          <label class="switch-label"><input id="invert" type="checkbox" checked><span class="switch" aria-hidden="true"></span><span><span data-i18n="Invertera">Invertera</span><small><span data-i18n="Ger en positiv papperskopia">Ger en positiv papperskopia</span></small></span></label>
+          <label class="switch-label"><input id="mirror" type="checkbox" checked><span class="switch" aria-hidden="true"></span><span><span data-i18n="Spegelvänd">Spegelvänd</span><small><span data-i18n="Rättvänd kopia mot skärmen">Rättvänd kopia mot skärmen</span></small></span></label>
+        </div>
+        <div class="sliders"><label for="light"><span data-i18n="Bildljus">Bildljus </span><output id="lightValue">25 %</output><input id="light" type="range" min="5" max="100" value="25" step="1"></label><label for="scale"><span data-i18n="Bildstorlek">Bildstorlek </span><output id="scaleValue">80 %</output><input id="scale" type="range" min="20" max="100" value="80" step="1"></label></div>
+        <p class="small-note"><span data-i18n="Bilden görs svartvit. Bildljus ändrar bildsignalen; enhetens skärmljusstyrka ställer du separat.">Bilden görs svartvit. Bildljus ändrar bildsignalen; enhetens skärmljusstyrka ställer du separat.</span></p>
+      </section>
+      <section class="timer-section" aria-label="Exponeringsinställningar" data-i18n-aria="Exponeringsinställningar">
+        <div class="section-heading"><span class="index">02</span><h2><span data-i18n="Exponering">Exponering</span></h2><span id="readyBadge" class="badge"><span data-i18n="VÄLJ BILD">VÄLJ BILD</span></span></div>
+        <label class="field-caption" for="duration"><span data-i18n="EXPONERINGSTID">EXPONERINGSTID</span></label>
+        <div class="time-input"><input id="duration" type="number" inputmode="numeric" min="50" max="30000" step="10" value="500"><span>ms</span></div>
+        <div class="time-foot"><span id="seconds">0,500 sekunder</span><span>50–30 000 ms</span></div>
+        <div class="presets" aria-label="Förvalda exponeringstider" data-i18n-aria="Förvalda exponeringstider"><button data-ms="100">0,1 s</button><button data-ms="250">0,25 s</button><button data-ms="500" class="selected" aria-pressed="true">0,5 s</button><button data-ms="1000">1 s</button><button data-ms="2000">2 s</button></div>
+        <div class="setting-row"><label for="delay"><span data-i18n="Fördröjning">Fördröjning</span><small><span data-i18n="Tid att placera skärmen mot papperet">Tid att placera skärmen mot papperet</span></small></label><select id="delay"><option value="0" data-i18n="Ingen">Ingen</option><option value="1000" data-i18n="1 sekund">1 sekund</option><option value="3000" data-i18n="3 sekunder">3 sekunder</option><option value="5000" data-i18n="5 sekunder">5 sekunder</option><option value="10000" selected data-i18n="10 sekunder">10 sekunder</option><option value="20000" data-i18n="20 sekunder">20 sekunder</option></select></div>
+        <div class="setting-row"><label for="mode"><span data-i18n="Exponeringssätt">Exponeringssätt</span></label><select id="mode"><option value="single" data-i18n="Hel bild">Hel bild</option><option value="strip" data-i18n="Provremsa · 4 fält">Provremsa · 4 fält</option></select></div>
+        <div id="stripGuide" class="strip-guide" hidden><div id="stripTimes"></div><p><span data-i18n="Fyra lika breda fält av bilden. Tiderna räknas från vänster. Håll samma papper stilla hela exponeringen.">Fyra lika breda fält av bilden. Tiderna räknas från vänster. Håll samma papper stilla hela exponeringen.</span></p></div>
+        <label class="sound-row"><input id="sound" type="checkbox" checked><span data-i18n="Ljudsignaler"> Ljudsignaler </span><span><span data-i18n="nedräkning + klar">nedräkning + klar</span></span></label>
+        <button id="mobileStart" class="arm-button mobile-start" disabled><span class="button-dot"></span><span id="mobileStartLabel">Exponera om 10 s</span></button>
+        <p class="mobile-note"><span data-i18n="Tryck och lägg mobilen med skärmen mot papperet under fördröjningen. Efter klarsignalen: lyft mobilen och tryck för att öppna reglagen. Beröringar under nedräkning och exponering ignoreras.">Tryck och lägg mobilen med skärmen mot papperet under fördröjningen. Efter klarsignalen: lyft mobilen och tryck för att öppna reglagen. Beröringar under nedräkning och exponering ignoreras.</span></p>
+        <button id="arm" class="arm-button" disabled><span class="button-dot"></span><span data-i18n="Tangentbordsläge">Tangentbordsläge</span><kbd>F</kbd></button>
+        <p class="arm-note" data-i18n="keyboardHelp">Mellanslag: exponera. C: tillbaka när papperet är borttaget.</p>
+        <div id="status" class="status-line" role="status" aria-live="polite"><span data-i18n="Välj en bild eller prova testbilden.">Välj en bild eller prova testbilden.</span></div>
+      </section>
+    </div>
+    <section class="bottom-panel">
+      <div class="howto"><span class="index">03</span><div><h2><span data-i18n="Från skärm till skål">Från skärm till skål</span></h2><p><span data-i18n="På mobilen: välj 5, 10 eller 20 sekunders fördröjning och tryck Exponera om … s. Lägg skärmen mot torrt fotopapper med emulsionssidan mot skärmen. Lyft efter klarsignalen. På datorn kan du använda tangentbordsläget. Framkalla sedan som vanligt.">På mobilen: välj 5, 10 eller 20 sekunders fördröjning och tryck Exponera om … s. Lägg skärmen mot torrt fotopapper med emulsionssidan mot skärmen. Lyft efter klarsignalen. På datorn kan du använda tangentbordsläget. Framkalla sedan som vanligt.</span></p></div></div>
+      <div class="keyboard-guide"><div><kbd><span data-i18n="Mellanslag">Mellanslag</span></kbd><span><span data-i18n="Exponera">Exponera</span></span></div><div><kbd>Esc</kbd><span><span data-i18n="Avbryt till svart">Avbryt till svart</span></span></div><div><kbd>↑</kbd><kbd>↓</kbd><span><span data-i18n="± 50 ms i vänteläget">± 50 ms i vänteläget</span></span></div><div><kbd>C</kbd><span><span data-i18n="Tillbaka till reglagen">Tillbaka till reglagen</span></span></div></div>
+    </section>
+    <p class="small-note"><span data-i18n="På iPhone: öppna appen från hemskärmen för att slippa webbläsarens ljusa fält. Ställ skärmljusstyrkan manuellt och stäng av automatisk ljusstyrka, True Tone och Night Shift för jämförbara prov.">På iPhone: öppna appen från hemskärmen för att slippa webbläsarens ljusa fält. Ställ skärmljusstyrkan manuellt och stäng av automatisk ljusstyrka, True Tone och Night Shift för jämförbara prov.</span></p>
+    <details class="technical"><summary><span data-i18n="Om svartläge och korta tider">Om svartläge och korta tider</span></summary><p><strong><span data-i18n="Svart bild stänger inte av LCD-bakbelysningen.">Svart bild stänger inte av LCD-bakbelysningen.</span></strong><span data-i18n="Appen kan inte släcka datorns bildskärm fysiskt. Täck eller släck skärmen mellan pappersbyten och kontrollera slöjning med en provbit. En svart skärm är inte en garanterad mörkrumsslutare."> Appen kan inte släcka datorns bildskärm fysiskt. Täck eller släck skärmen mellan pappersbyten och kontrollera slöjning med en provbit. En svart skärm är inte en garanterad mörkrumsslutare.</span></p><p><span data-i18n="Bildskärmens uppdatering och webbläsaren begränsar tidsprecisionen. Vid 60 Hz är en bildruta ungefär 16,7 ms. Använd provremsor och samma skärminställningar. Byte av flik, tappat fokus eller helskärm samt långa avbrott avbryter en pågående exponering till svart.">Bildskärmens uppdatering och webbläsaren begränsar tidsprecisionen. Vid 60 Hz är en bildruta ungefär 16,7 ms. Använd provremsor och samma skärminställningar. Byte av flik, tappat fokus eller helskärm samt långa avbrott avbryter en pågående exponering till svart.</span></p></details>
+    <section class="log-section"><div class="log-heading"><h2><span data-i18n="Senaste exponeringar">Senaste exponeringar</span></h2><button id="clearLog" class="quiet"><span data-i18n="Rensa">Rensa</span></button></div><div id="logEmpty" class="small-note"><span data-i18n="Loggen visar nominell tid och beräknat intervall mellan bildrutorna. Inget ljus mäts.">Loggen visar nominell tid och beräknat intervall mellan bildrutorna. Inget ljus mäts.</span></div><ol id="log"></ol></section>
+    <footer><span><span data-i18n="SKÄRMKOPIA / LOKALT ARBETE">SKÄRMKOPIA / LOKALT ARBETE</span></span><a href="./laptopogram-offline.html" download="laptopogram.html"><span data-i18n="Spara appen för offlinebruk ↓">Spara appen för offlinebruk ↓</span></a></footer>
+  </main>
+  <div id="darkroom" hidden tabindex="-1" aria-label="Svart exponeringsläge. Mobil: tryck efter avslut öppnar reglagen. Tangentbord: Mellanslag exponerar, Esc avbryter, C öppnar reglagen." data-i18n-aria="Svart exponeringsläge. Mobil: tryck efter avslut öppnar reglagen. Tangentbord: Mellanslag exponerar, Esc avbryter, C öppnar reglagen."><canvas id="exposure" aria-label="Exponeringsyta" data-i18n-aria="Exponeringsyta"></canvas></div>
+</body>
+</html>
