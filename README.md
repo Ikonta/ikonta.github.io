@@ -1,3 +1,7 @@
+## v21.2.6 · 16 November 2026 — Escura Hasselback focus correction
+
+Added Escura Hasselback focusing-screen adapter to Make → Other work, with the original Printables model link. The design uses a spacer about 3.8–4.0 mm thick to compensate for the focusing-screen / Instax film-plane offset (focus shift). The author provided version-specific installation guidance; the spacer does **not** guarantee correct focus at all distances. Kept the presentation intentionally brief; no image or layout changes elsewhere.
+
 ## v21.2.5 · 15 November 2026 — homepage Research image
 Replaced the geometric illustration in the homepage Research card with the supplied documentary photograph (IMG_4633s.jpg). No other page content or styling was changed. RAINFIELD remains under Make, separate from Björn Hedin’s research collaboration.
 
