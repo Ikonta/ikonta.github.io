@@ -16,14 +16,14 @@
   <meta property="og:title" content="Laptopogram">
   <meta property="og:description" content="From screen to photographic paper.">
   <title>Laptopogram — From screen to photographic paper</title>
-  <link rel="stylesheet" href="./styles.css?v=6">
-  <script type="module" src="./app.mjs?v=6"></script>
+  <link rel="stylesheet" href="./styles.css?v=7">
+  <script type="module" src="./app.mjs?v=7"></script>
 </head>
 <body>
   <main id="controls" class="shell">
     <header class="masthead">
       <div><div class="eyebrow"><span data-i18n="DIGITAL BILD. ANALOGT PAPPER.">DIGITAL BILD. ANALOGT PAPPER.</span></div><h1>Laptopogram<span class="orange">.</span></h1></div>
-      <div class="instrument-id"><span class="local-dot"></span><span data-i18n="BILDEN STANNAR PÅ DIN ENHET"> BILDEN STANNAR PÅ DIN ENHET</span><br><span>EXPOSURE TIMER / 06</span></div>
+      <div class="instrument-id"><span class="local-dot"></span><span data-i18n="BILDEN STANNAR PÅ DIN ENHET"> BILDEN STANNAR PÅ DIN ENHET</span><br><span>EXPOSURE TIMER / 07</span></div>
     <div class="header-tools"><label for="language" class="sr-only" data-i18n="language">Språk</label><select id="language" aria-label="Language"><option value="sv" lang="sv">Svenska</option><option value="en" lang="en">English</option><option value="ja" lang="ja">日本語</option></select><button id="share" class="share-button" data-i18n="share">Dela</button></div></header>
     <div class="workbench">
       <section class="image-section" aria-label="Bild och förhandsvisning" data-i18n-aria="Bild och förhandsvisning">
@@ -55,6 +55,13 @@
         <label class="sound-row"><input id="sound" type="checkbox" checked><span data-i18n="Ljudsignaler"> Ljudsignaler </span><span><span data-i18n="nedräkning + klar">nedräkning + klar</span></span></label>
         <button id="mobileStart" class="arm-button mobile-start" disabled><span class="button-dot"></span><span id="mobileStartLabel">Exponera om 10 s</span></button>
         <p class="mobile-note"><span data-i18n="Tryck och lägg mobilen med skärmen mot papperet under fördröjningen. Efter klarsignalen: lyft mobilen och tryck för att öppna reglagen. Beröringar under nedräkning och exponering ignoreras.">Tryck och lägg mobilen med skärmen mot papperet under fördröjningen. Efter klarsignalen: lyft mobilen och tryck för att öppna reglagen. Beröringar under nedräkning och exponering ignoreras.</span></p>
+        <details class="remote-panel"><summary data-i18n="remoteTitle">Fjärrutlösare</summary>
+          <p data-i18n="remoteHelp"></p>
+          <button id="remoteLearn" class="button-small" data-i18n="remoteLearn">Testa / lär in knapp</button>
+          <p id="remoteStatus" class="remote-status" role="status" aria-live="polite"></p>
+          <button id="remoteArm" class="arm-button" disabled><span class="button-dot"></span><span data-i18n="remoteArm">Aktivera fjärrläge</span></button>
+          <p data-i18n="remoteNote"></p>
+        </details>
         <button id="arm" class="arm-button" disabled><span class="button-dot"></span><span data-i18n="Tangentbordsläge">Tangentbordsläge</span><kbd>F</kbd></button>
         <p class="arm-note" data-i18n="keyboardHelp">Mellanslag: exponera. C: tillbaka när papperet är borttaget.</p>
         <div id="status" class="status-line" role="status" aria-live="polite"><span data-i18n="Välj en bild eller prova testbilden.">Välj en bild eller prova testbilden.</span></div>

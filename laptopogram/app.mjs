@@ -1,4 +1,4 @@
-import { ExposureTimer, exposureDurations, fitImage, processPixels } from './exposure-core.mjs?v=6';
+import { ExposureTimer, exposureDurations, fitImage, processPixels } from './exposure-core.mjs?v=7';
 
 const translations = {
   "sv": {
@@ -106,7 +106,20 @@ const translations = {
     "Ogiltig fördröjning.": "Ogiltig fördröjning.",
     "Ogiltig exponeringstid.": "Ogiltig exponeringstid.",
     "rangeFull": "Välj {min}–{max} ms.",
-    "keyboardHelp": "Mellanslag: exponera. C: tillbaka när papperet är borttaget."
+    "keyboardHelp": "Mellanslag: exponera. C: tillbaka när papperet är borttaget.",
+    "remoteTitle": "Fjärrutlösare",
+    "remoteHelp": "Parkoppla fjärren i telefonens Bluetooth-inställningar. Testa sedan knappen här, utan fotopapper.",
+    "remoteLearn": "Testa / lär in knapp",
+    "remoteCancel": "Avbryt knapptest",
+    "remoteArm": "Aktivera fjärrläge",
+    "remoteNote": "Skärmen blir svart och väntar. Lägg telefonen på papperet. Ett tryck på den inlärda knappen exponerar direkt, utan startfördröjning. Lyft telefonen och tryck på skärmen för att avsluta.",
+    "remoteUntested": "Ingen knapp inlärd.",
+    "remoteListening": "Tryck på fjärrknappen inom 10 sekunder.",
+    "remoteLearned": "Knapp registrerad: {key}.",
+    "remoteMissing": "Ingen signal nådde webbläsaren. Prova fjärrens andra knapp. Om bara volymen ändras kan den här kombinationen av fjärr, telefon och webbläsare inte styra webbappen. Ett Bluetooth-tangentbord med Enter eller mellanslag kan vara ett alternativ.",
+    "remoteReserved": "Den knappen används av appen. Prova en annan knapp.",
+    "remoteStandby": "Fjärrläge redo. Skärmen är svart. Fjärrknappen exponerar direkt.",
+    "remoteComplete": "Exponering {n} klar. Skärmen är svart. Fjärrknappen kan starta en ny exponering."
   },
   "en": {
     "DIGITAL BILD. ANALOGT PAPPER.": "From screen to photographic paper.",
@@ -213,7 +226,20 @@ const translations = {
     "Ogiltig fördröjning.": "Invalid start delay.",
     "Ogiltig exponeringstid.": "Invalid exposure time.",
     "rangeFull": "Choose {min}–{max} ms.",
-    "keyboardHelp": "Space: expose. C: return after removing the paper."
+    "keyboardHelp": "Space: expose. C: return after removing the paper.",
+    "remoteTitle": "Remote shutter",
+    "remoteHelp": "Pair the remote in your phone’s Bluetooth settings. Then test its button here, without photographic paper.",
+    "remoteLearn": "Test / learn button",
+    "remoteCancel": "Cancel button test",
+    "remoteArm": "Enable remote mode",
+    "remoteNote": "The screen goes black and waits. Place the phone on the paper. Press the learned button to expose immediately, without a start delay. Lift the phone and tap the screen to leave remote mode.",
+    "remoteUntested": "No button learned.",
+    "remoteListening": "Press the remote button within 10 seconds.",
+    "remoteLearned": "Button registered: {key}.",
+    "remoteMissing": "No signal reached the browser. Try the other remote button. If only the volume changes, this remote/phone/browser combination cannot control the web app. A Bluetooth keyboard with Enter or Space may be an alternative.",
+    "remoteReserved": "That key is reserved by the app. Try another button.",
+    "remoteStandby": "Remote mode ready. The screen is black. The remote button exposes immediately.",
+    "remoteComplete": "Exposure {n} complete. The screen is black. The remote can start another exposure."
   },
   "ja": {
     "DIGITAL BILD. ANALOGT PAPPER.": "画面から印画紙へ。",
@@ -320,7 +346,20 @@ const translations = {
     "Ogiltig fördröjning.": "待ち時間が無効です。",
     "Ogiltig exponeringstid.": "露光時間が無効です。",
     "rangeFull": "{min}〜{max} msで設定してください。",
-    "keyboardHelp": "スペース：露光。C：設定に戻る（先に印画紙を離してください）。"
+    "keyboardHelp": "スペース：露光。C：設定に戻る（先に印画紙を離してください）。",
+    "remoteTitle": "リモートシャッター",
+    "remoteHelp": "端末のBluetooth設定でリモコンをペアリングし、印画紙を置かずにボタンをテストしてください。",
+    "remoteLearn": "ボタンをテスト・登録",
+    "remoteCancel": "テストを中止",
+    "remoteArm": "リモート待機を開始",
+    "remoteNote": "画面が黒くなり待機します。端末を印画紙に重ね、登録したボタンを押すと待ち時間なしで露光します。終了するには端末を持ち上げて画面をタップしてください。",
+    "remoteUntested": "ボタンは未登録です。",
+    "remoteListening": "10秒以内にリモコンのボタンを押してください。",
+    "remoteLearned": "ボタンを登録しました：{key}。",
+    "remoteMissing": "ブラウザに信号が届きませんでした。リモコンのもう一方のボタンを試してください。音量だけが変わる場合、この組み合わせではウェブアプリを操作できません。Enterやスペースを送るBluetoothキーボードが代わりになる場合があります。",
+    "remoteReserved": "そのキーはアプリで使用しています。別のボタンを試してください。",
+    "remoteStandby": "リモート待機中です。画面は黒いままです。リモコンのボタンで即座に露光します。",
+    "remoteComplete": "露光{n}が完了しました。画面は黒いままです。リモコンで次の露光を開始できます。"
   }
 };
 const $ = id => document.getElementById(id);
@@ -338,6 +377,23 @@ let demoActive = false;
 let hasImage = false;
 let dark = false;
 let mobileSession = false;
+let remoteSession = false;
+let remoteDisabled = false;
+let remoteBinding = '';
+let remoteLearning = false;
+let remoteHeld = '';
+let remoteLearnTimeout;
+let remoteReadyAt = 0;
+let remoteFeedback = 'remoteUntested';
+let remoteFeedbackValues = {};
+try {
+  const saved = localStorage.getItem('laptopogram-remote');
+  if (typeof saved === 'string' && /^(code|key):.{1,60}$/.test(saved)) {
+    remoteBinding = saved;
+    remoteFeedback = 'remoteLearned';
+    remoteFeedbackValues = {key: saved.slice(saved.indexOf(':') + 1)};
+  }
+} catch {}
 let armGeneration = 0;
 let audioContext;
 let wakeLock;
@@ -371,6 +427,7 @@ function applyLanguage(next) {
   if (hasImage) $('readyBadge').textContent = t('ready');
   if (demoActive) $('filename').textContent = t('demoName');
   renderLog();
+  updateRemoteControls();
   if (currentStatus) status(currentStatus.key, currentStatus.error, currentStatus.values);
 }
 
@@ -507,6 +564,7 @@ function imageReady(filename) {
   $('empty').hidden = true;
   $('arm').disabled = false;
   $('mobileStart').disabled = false;
+  updateRemoteControls();
   $('readyBadge').textContent = t('ready');
   $('readyBadge').classList.add('ready');
   prepareImage();
@@ -639,21 +697,30 @@ const timer = new ExposureTimer({
     addLog(result);
     if (result.valid) {
       exposureCount++;
-      status('complete', false, {n: exposureCount});
+      remoteReadyAt = performance.now() + 500;
+      status(remoteSession ? 'remoteComplete' : 'complete', false, {n: exposureCount});
       beep(660, 0.08);
       beep(880, 0.08, 0.14);
     } else {
+      remoteDisabled = remoteSession;
+      remoteSession = false;
       status('aborted', true, {reason: result.reason});
       beep(220, 0.16);
     }
   }
 });
 
-async function arm(autoStart = false) {
+async function arm(autoStart = false, useRemote = false) {
   if (dark || !hasImage) return;
   if (!$('duration').checkValidity()) { $('duration').reportValidity(); return; }
+  if (useRemote && !remoteBinding) return;
+  stopRemoteLearning();
   const generation = ++armGeneration;
-  mobileSession = autoStart;
+  remoteSession = useRemote;
+  remoteDisabled = false;
+  remoteHeld = '';
+  remoteReadyAt = 0;
+  mobileSession = autoStart || useRemote;
   dark = true;
   fullscreenWasActive = false;
   activeSegments = [false];
@@ -666,8 +733,9 @@ async function arm(autoStart = false) {
   status('idle');
   // Optional browser APIs must never hold up the mobile countdown. Mobile
   // fullscreen also produces a browser overlay, so reserve it for keyboard mode.
-  if (autoStart) {
-    startExposure();
+  if (autoStart || useRemote) {
+    if (autoStart) startExposure();
+    else { status('remoteStandby'); beep(440, 0.08); }
     requestWakeLock(generation);
     return;
   }
@@ -698,6 +766,9 @@ async function showControls() {
   paintExposure([false]);
   dark = false;
   mobileSession = false;
+  remoteSession = false;
+  remoteDisabled = false;
+  remoteHeld = '';
   $('darkroom').hidden = true;
   $('controls').inert = false;
   document.body.classList.remove('is-dark');
@@ -708,12 +779,12 @@ async function showControls() {
   $('arm').focus({ preventScroll: true });
 }
 
-function startExposure() {
+function startExposure(immediate = false) {
   if (!dark || timer.running || !hasImage) return;
   try {
     const strip = $('mode').value === 'strip';
     const durations = exposureDurations($('duration').value, strip);
-    const delay = Number($('delay').value);
+    const delay = immediate ? 0 : Number($('delay').value);
     startedSettings = { strip, delay: Number.isFinite(delay) ? delay : 10000 };
     void initAudio();
     if (!timer.start({ durations, delay: startedSettings.delay }, performance.now())) status('startError', true);
@@ -727,6 +798,47 @@ function adjustTime(direction) {
   updateSettings();
   if (dark) beep(direction > 0 ? 700 : 400, 0.035);
 }
+
+function remoteToken(event) {
+  if (event.code && event.code !== 'Unidentified') return `code:${event.code}`;
+  if (event.key && event.key !== 'Unidentified') return `key:${event.key}`;
+  return '';
+}
+function updateRemoteControls() {
+  $('remoteLearn').textContent = t(remoteLearning ? 'remoteCancel' : 'remoteLearn');
+  $('remoteArm').disabled = !hasImage || !remoteBinding || remoteLearning;
+  $('remoteStatus').textContent = t(remoteFeedback, remoteFeedbackValues);
+}
+function remoteMessage(key, values = {}) {
+  remoteFeedback = key;
+  remoteFeedbackValues = values;
+  updateRemoteControls();
+}
+function stopRemoteLearning() {
+  remoteLearning = false;
+  clearTimeout(remoteLearnTimeout);
+  updateRemoteControls();
+}
+$('remoteLearn').addEventListener('click', () => {
+  if (remoteLearning) {
+    stopRemoteLearning();
+    remoteMessage(remoteBinding ? 'remoteLearned' : 'remoteUntested', {key: remoteBinding.split(':').slice(1).join(':')});
+    return;
+  }
+  remoteLearning = true;
+  remoteMessage('remoteListening');
+  remoteLearnTimeout = setTimeout(() => {
+    stopRemoteLearning();
+    remoteMessage('remoteMissing');
+  }, 10000);
+});
+$('remoteArm').addEventListener('click', () => void arm(false, true));
+window.addEventListener('keyup', event => {
+  if (remoteToken(event) === remoteHeld) {
+    event.preventDefault();
+    remoteHeld = '';
+  }
+});
 
 $('language').addEventListener('change', () => applyLanguage($('language').value));
 $('share').addEventListener('click', async () => {
@@ -762,9 +874,32 @@ $('darkroom').addEventListener('dblclick', () => { if (!mobileSession && !timer.
 
 window.addEventListener('keydown', event => {
   if (event.ctrlKey || event.metaKey || event.altKey || event.isComposing) return;
+  const token = remoteToken(event);
+  if (remoteLearning) {
+    event.preventDefault();
+    if (event.repeat) return;
+    if (!token || ['Escape', 'KeyC', 'KeyF', 'Tab', 'ShiftLeft', 'ShiftRight', 'ControlLeft', 'ControlRight', 'AltLeft', 'AltRight', 'MetaLeft', 'MetaRight'].includes(event.code) || ['Escape', 'c', 'C', 'f', 'F', 'Tab', 'Shift', 'Control', 'Alt', 'Meta'].includes(event.key)) {
+      remoteMessage('remoteReserved');
+      return;
+    }
+    remoteBinding = token;
+    remoteHeld = token;
+    try { localStorage.setItem('laptopogram-remote', token); } catch {}
+    stopRemoteLearning();
+    remoteMessage('remoteLearned', {key: event.key || event.code});
+    return;
+  }
+  if (dark && remoteSession && token === remoteBinding) {
+    event.preventDefault();
+    if (event.repeat || remoteHeld === token) return;
+    remoteHeld = token;
+    if (!timer.running && performance.now() >= remoteReadyAt) startExposure(true);
+    return;
+  }
+  if (dark && (remoteSession || remoteDisabled) && !['Escape', 'KeyC'].includes(event.code)) return;
   if (dark) {
     if (['Space', 'Escape', 'KeyC', 'ArrowUp', 'ArrowDown', 'Tab'].includes(event.code)) event.preventDefault();
-    if (event.code === 'Escape') { timer.abort('Avbruten med Esc.', performance.now()); paintExposure([false]); return; }
+    if (event.code === 'Escape') { if (remoteSession) remoteDisabled = true; timer.abort('Avbruten med Esc.', performance.now()); remoteSession = false; paintExposure([false]); return; }
     if (event.repeat) return;
     if (event.code === 'Space') startExposure();
     if (event.code === 'KeyC') void showControls();
@@ -777,7 +912,7 @@ window.addEventListener('keydown', event => {
   if (event.code === 'KeyF') { event.preventDefault(); void arm(); }
 });
 window.addEventListener('blur', () => { if (dark && !mobileSession) { timer.abort('Fönstret tappade fokus.', performance.now()); paintExposure([false]); } });
-document.addEventListener('visibilitychange', () => { if (document.hidden && dark) { timer.abort('Fliken doldes.', performance.now()); paintExposure([false]); } });
+document.addEventListener('visibilitychange', () => { if (document.hidden && dark) { if (remoteSession) remoteDisabled = true; timer.abort('Fliken doldes.', performance.now()); remoteSession = false; paintExposure([false]); } });
 document.addEventListener('fullscreenchange', () => {
   if (document.fullscreenElement) fullscreenWasActive = true;
   else if (dark && fullscreenWasActive) { timer.abort('Helskärmsläget avslutades.', performance.now()); paintExposure([false]); }
@@ -788,7 +923,7 @@ window.addEventListener('resize', () => {
   if (timer.running && timer.phase === 'exposing') timer.abort('Skärmytan ändrade storlek.', performance.now());
   resizeCanvases();
 });
-window.addEventListener('pagehide', () => { timer.abort('Sidan stängdes.', performance.now()); paintExposure([false]); });
+window.addEventListener('pagehide', () => { if (remoteSession) remoteDisabled = true; remoteSession = false; timer.abort('Sidan stängdes.', performance.now()); paintExposure([false]); });
 
 restorePreferences();
 let savedLanguage;
