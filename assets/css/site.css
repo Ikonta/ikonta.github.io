@@ -216,7 +216,7 @@ main.shell{min-height:calc(100vh - 210px);padding-bottom:22px}
 @media(max-width:540px){.home-grid-start{margin-top:48px}.curated-grid{grid-template-columns:1fr;gap:27px;margin-bottom:45px}.curated-grid .photo-thumb{height:auto;min-height:0;max-height:none}.curated-grid .photo-thumb img{width:100%;height:auto;max-height:none}}
 
 /* v21.10: one authentic app screenshot; restrained secondary downloads. */
-.laptopogram-project .laptopogram-capture{max-width:790px}
+.laptopogram-project .laptopogram-capture{max-width:420px}
 .laptopogram-project .laptopogram-capture img{max-height:none;object-fit:contain}
 .laptopogram-project .laptopogram-secondary-links{margin:0 0 26px}
 .laptopogram-project .laptopogram-secondary-links a{text-decoration:underline;text-underline-offset:4px;text-decoration-color:#939a91}
